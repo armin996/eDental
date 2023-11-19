@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.dgvRatings = new System.Windows.Forms.DataGridView();
-            this.cmbDentists = new System.Windows.Forms.ComboBox();
-            this.cmbClients = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DentistFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClientFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbDentists = new System.Windows.Forms.ComboBox();
+            this.cmbClients = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRatings)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,33 +53,89 @@
             this.DentistFullName,
             this.ClientFullName,
             this.Date});
-            this.dgvRatings.Location = new System.Drawing.Point(12, 109);
+            this.dgvRatings.Location = new System.Drawing.Point(14, 145);
+            this.dgvRatings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvRatings.Name = "dgvRatings";
+            this.dgvRatings.RowHeadersWidth = 51;
             this.dgvRatings.RowTemplate.Height = 25;
-            this.dgvRatings.Size = new System.Drawing.Size(776, 329);
+            this.dgvRatings.Size = new System.Drawing.Size(887, 439);
             this.dgvRatings.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            this.Id.Width = 125;
+            // 
+            // Rate
+            // 
+            this.Rate.DataPropertyName = "Rate";
+            this.Rate.HeaderText = "Rate";
+            this.Rate.MinimumWidth = 6;
+            this.Rate.Name = "Rate";
+            this.Rate.Width = 125;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Comment";
+            this.Comment.MinimumWidth = 6;
+            this.Comment.Name = "Comment";
+            this.Comment.Width = 125;
+            // 
+            // DentistFullName
+            // 
+            this.DentistFullName.DataPropertyName = "DentistFullName";
+            this.DentistFullName.HeaderText = "Dentist";
+            this.DentistFullName.MinimumWidth = 6;
+            this.DentistFullName.Name = "DentistFullName";
+            this.DentistFullName.Width = 125;
+            // 
+            // ClientFullName
+            // 
+            this.ClientFullName.DataPropertyName = "ClientFullName";
+            this.ClientFullName.HeaderText = "Client";
+            this.ClientFullName.MinimumWidth = 6;
+            this.ClientFullName.Name = "ClientFullName";
+            this.ClientFullName.Width = 125;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Date";
+            this.Date.MinimumWidth = 6;
+            this.Date.Name = "Date";
+            this.Date.Width = 125;
             // 
             // cmbDentists
             // 
+            this.cmbDentists.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDentists.FormattingEnabled = true;
-            this.cmbDentists.Location = new System.Drawing.Point(20, 31);
+            this.cmbDentists.Location = new System.Drawing.Point(23, 41);
+            this.cmbDentists.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbDentists.Name = "cmbDentists";
-            this.cmbDentists.Size = new System.Drawing.Size(155, 23);
+            this.cmbDentists.Size = new System.Drawing.Size(177, 28);
             this.cmbDentists.TabIndex = 1;
             // 
             // cmbClients
             // 
+            this.cmbClients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClients.FormattingEnabled = true;
-            this.cmbClients.Location = new System.Drawing.Point(240, 31);
+            this.cmbClients.Location = new System.Drawing.Point(274, 41);
+            this.cmbClients.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbClients.Name = "cmbClients";
-            this.cmbClients.Size = new System.Drawing.Size(155, 23);
+            this.cmbClients.Size = new System.Drawing.Size(177, 28);
             this.cmbClients.TabIndex = 2;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(713, 67);
+            this.btnSearch.Location = new System.Drawing.Point(815, 89);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(86, 31);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -88,69 +144,33 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 12);
+            this.label1.Location = new System.Drawing.Point(24, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 15);
+            this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "Dentist";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(242, 12);
+            this.label2.Location = new System.Drawing.Point(277, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.Size = new System.Drawing.Size(47, 20);
             this.label2.TabIndex = 5;
             this.label2.Text = "Client";
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // Rate
-            // 
-            this.Rate.DataPropertyName = "Rate";
-            this.Rate.HeaderText = "Rate";
-            this.Rate.Name = "Rate";
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            // 
-            // DentistFullName
-            // 
-            this.DentistFullName.DataPropertyName = "DentistFullName";
-            this.DentistFullName.HeaderText = "Dentist";
-            this.DentistFullName.Name = "DentistFullName";
-            // 
-            // ClientFullName
-            // 
-            this.ClientFullName.DataPropertyName = "ClientFullName";
-            this.ClientFullName.HeaderText = "Client";
-            this.ClientFullName.Name = "ClientFullName";
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "Date";
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            // 
             // frmRatings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.cmbClients);
             this.Controls.Add(this.cmbDentists);
             this.Controls.Add(this.dgvRatings);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmRatings";
             this.Text = "Ratings";
             this.Load += new System.EventHandler(this.frmRatings_Load);

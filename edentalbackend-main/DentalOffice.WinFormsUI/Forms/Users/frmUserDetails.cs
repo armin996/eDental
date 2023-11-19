@@ -53,26 +53,148 @@ namespace DentalOffice.WinFormsUI.Forms.Users
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            _request.FirstName = txtFirstName.Text;
-            _request.LastName = txtLastName.Text;
-            _request.Email = txtEmail.Text;
-            _request.Phone = txtPhone.Text;
-            _request.Username = txtUsername.Text;
-            _request.Address = txtAddress.Text;
-            _request.Gender = (Gender)cmbGender.SelectedValue;
-            _request.Role = (Role)cmbRole.SelectedValue;
-
-            var updatedUser = await _apiService.Update<UserDto>(_id, _request);
-
-            if (updatedUser is not null)
+            if (ValidateChildren())
             {
-                MessageBox.Show("User successfully updated!");
-                this.Hide();
+                _request.FirstName = txtFirstName.Text;
+                _request.LastName = txtLastName.Text;
+                _request.Email = txtEmail.Text;
+                _request.Phone = txtPhone.Text;
+                _request.Username = txtUsername.Text;
+                _request.Address = txtAddress.Text;
+                _request.Gender = (Gender)cmbGender.SelectedValue;
+                _request.Role = (Role)cmbRole.SelectedValue;
+
+                var updatedUser = await _apiService.Update<UserDto>(_id, _request);
+
+                if (updatedUser is not null)
+                {
+                    MessageBox.Show("User successfully updated!");
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("User can't be updated!");
+                    this.Hide();
+                }
+            }
+        }
+
+        private void txtFirstName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                errorProvider.SetError(txtFirstName, "First name is required.");
+                e.Cancel = true;
             }
             else
             {
-                MessageBox.Show("User can't be updated!");
-                this.Hide();
+                errorProvider.SetError(txtFirstName, null);
+            }
+        }
+
+        private void txtLastName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                errorProvider.SetError(txtLastName, "Last name is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtLastName, null);
+            }
+        }
+
+        private void txtEmail_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text) && !IsValidEmail(txtEmail.Text))
+            {
+                errorProvider.SetError(txtEmail, "Invalid email format.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtEmail, null);
+            }
+        }
+
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void txtPhone_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                errorProvider.SetError(txtPhone, "Phone is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtPhone, null);
+            }
+        }
+
+        private void txtAddress_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtAddress.Text))
+            {
+                errorProvider.SetError(txtAddress, "Address is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtAddress, null);
+            }
+        }
+
+        private void txtUsername_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+            {
+                errorProvider.SetError(txtUsername, "Username is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(txtUsername, null);
+            }
+        }
+
+        private void cmbGender_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (cmbGender.SelectedValue == null)
+            {
+                errorProvider.SetError(cmbGender, "Gender is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(cmbGender, null);
+            }
+        }
+
+        private void cmbRole_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (cmbRole.SelectedValue == null)
+            {
+                errorProvider.SetError(cmbRole, "Role is required.");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(cmbRole, null);
             }
         }
     }

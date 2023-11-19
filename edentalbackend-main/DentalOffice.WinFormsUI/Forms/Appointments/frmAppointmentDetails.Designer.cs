@@ -56,6 +56,7 @@
             // 
             // cmbDentist
             // 
+            this.cmbDentist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDentist.FormattingEnabled = true;
             this.cmbDentist.Location = new System.Drawing.Point(51, 188);
             this.cmbDentist.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -65,6 +66,7 @@
             // 
             // cmbTreatment
             // 
+            this.cmbTreatment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTreatment.FormattingEnabled = true;
             this.cmbTreatment.Location = new System.Drawing.Point(421, 80);
             this.cmbTreatment.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -112,6 +114,7 @@
             // 
             // cmbClients
             // 
+            this.cmbClients.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClients.FormattingEnabled = true;
             this.cmbClients.Location = new System.Drawing.Point(421, 188);
             this.cmbClients.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

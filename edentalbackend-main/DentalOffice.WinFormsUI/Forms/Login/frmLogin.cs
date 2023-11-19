@@ -30,7 +30,7 @@ namespace DentalOffice.WinFormsUI.Forms.Login
 
                 UserDto loggedUser = await _authApiService.Login(loginRequest);
 
-                if (loggedUser is not null)
+                if (loggedUser is not null && loggedUser.Id != 0)
                 {
                     if (loggedUser.Role == Enums.Role.Admin)
                     {
@@ -42,6 +42,10 @@ namespace DentalOffice.WinFormsUI.Forms.Login
                     {
                         MessageBox.Show("Only administrators can be logged in desktop app!");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password. Please try again.");
                 }
             }
         }

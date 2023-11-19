@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Forms\DentistOffice\frmDentistOfficeDetails.cs~RF4612a30.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ClosedXML" Version="0.100.3" />
     <PackageReference Include="Flurl.Http" Version="3.0.1" />
     <PackageReference Include="Npgsql" Version="7.0.1" />

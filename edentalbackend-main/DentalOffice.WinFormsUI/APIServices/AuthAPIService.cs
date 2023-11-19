@@ -14,7 +14,14 @@ namespace DentalOffice.WinFormsUI.APIServices
         public async Task<UserDto> Login(UserLoginDto request)
         {
             var url = $"{Properties.Settings.Default.APIurl}/{_route}/login";
-            return await url.PostJsonAsync(request).ReceiveJson<UserDto>();
+            try
+            {
+                return await url.PostJsonAsync(request).ReceiveJson<UserDto>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                return  new UserDto { Id = 0 };
+            }        
         }
 
         public async Task<UserDto> Register(UserDto request)
