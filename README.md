@@ -2,7 +2,7 @@
 
 Seminarski rad
 
-Dashboard WinForm login: username: admin pass: Admin1234!
+Desktop login: username: admin pass: Admin1234!
 
 Flutter login: username: admin pass: Admin1234!
 
