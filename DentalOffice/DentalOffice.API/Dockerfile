@@ -10,7 +10,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-#RUN dotnet dev-certs https
+RUN dotnet dev-certs https
 WORKDIR /src
 COPY ["DentalOffice.API/DentalOffice.API.csproj", "DentalOffice.API/"]
 COPY ["DentalOffice.Dtos/DentalOffice.Dtos.csproj", "DentalOffice.Dtos/"]
@@ -28,6 +28,6 @@ RUN dotnet publish "DentalOffice.API.csproj" -c Release -o /app/publish /p:UseAp
 
 FROM base AS final
 WORKDIR /app
-#COPY --from=publish /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
+COPY --from=publish /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "DentalOffice.API.dll"]

@@ -7,6 +7,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+RUN dotnet dev-certs https --trust
 WORKDIR /src
 ARG BUILD_CONFIGURATION=Release
 COPY ["DentalOffice.AppointmentsAPI/DentalOffice.PaymentAPI.csproj", "DentalOffice.AppointmentsAPI/"]
@@ -26,5 +27,6 @@ RUN dotnet publish "./DentalOffice.PaymentAPI.csproj" -c $BUILD_CONFIGURATION -o
 
 FROM base AS final
 WORKDIR /app
+COPY --from=publish /root/.dotnet/corefx/cryptography/x509stores/my/* /root/.dotnet/corefx/cryptography/x509stores/my/
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "DentalOffice.PaymentAPI.dll"]
