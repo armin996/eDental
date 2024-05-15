@@ -1,0 +1,58 @@
+version: '3.4'
+services:
+  dentaloffice.paymentapi:
+    image: dentalofficepaymentapi
+    build:
+      context: .
+      dockerfile: /DentalOffice.AppointmentsAPI/Dockerfile
+    environment:
+        ConnectionStrings__dbConnection: "Server=dentaldb;Port=5432;Database=dentaldb;User Id=postgres;Password=postgres;"
+    ports:
+       - "55555:80"
+       - "55556:443"
+    depends_on:
+        - dentaldb
+        - dentaloffice.messageQueue
+    restart: on-failure
+
+  dentaloffice.api:
+    image: dentalofficeapi
+    build:
+      context: .
+      dockerfile: /DentalOffice.API/Dockerfile
+    environment:
+        ConnectionStrings__dbConnection: "Server=dentaldb;Port=5432;Database=dentaldb;User Id=postgres;Password=postgres;"
+    ports:
+        - "55557:80"
+        - "55558:443" 
+    depends_on:
+        - dentaldb
+        - dentaloffice.messageQueue
+    restart: on-failure
+
+  dentaloffice.messageQueue:
+    image: rabbitmq:3-management
+    ports:
+        - "15672:15672"
+        - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq  
+  dentaldb:
+    image: postgres
+    container_name: dentaldb
+    ports:
+        - "5433:5432" 
+    environment: 
+        - PGDATA=/var/lib/postgresql/data/pgdata
+        - POSTGRES_DB=dentaldb 
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
+  rabbitmq_data:  
